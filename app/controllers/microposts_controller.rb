@@ -1,8 +1,11 @@
 class MicropostsController < ApplicationController
   before_filter :authenticate, :only => [:create, :destroy]
-  before_filter :authorized_user, :only =>destroy
+  before_filter :authorized_user, :only =>:destroy
 
 	def index
+	end
+	
+	def show
 	end
   
 	def create
@@ -15,9 +18,18 @@ class MicropostsController < ApplicationController
 			render 'pages/home'
 		end
 	end
+	
+	def edit
+	end
+	
+	def update
+	end
 
   def destroy
-	@micropost.destroy
+	if @micropost.destroy
+		flash[:success] = "Micropost deleted!"
+		redirect_back_or root_path
+	end
 	redirect_back_or root_path
   end
   
@@ -25,4 +37,5 @@ class MicropostsController < ApplicationController
 	def authorized_user
 		@micropost = current_user.microposts.find_by_id(params[:id])
 		redirect_to root_path if @micropost.nil?
+	end
 end
