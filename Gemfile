@@ -7,6 +7,16 @@ gem 'rails', '3.1.1'
 
 gem 'sqlite3'
 
+# Gravatar
+gem 'gravatar_image_tag', '1.0.0.pre2'
+
+# Paginate
+gem 'will_paginate', '3.0.pre2'
+
+group :development do
+	gem 'faker', '0.3.1'
+end
+
 
 # Gems used only for assets and not required
 # in production environments by default.

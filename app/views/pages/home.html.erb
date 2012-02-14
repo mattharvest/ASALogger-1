@@ -1,5 +1,21 @@
-<h1>ASA Logger</h1>
-<p>This is the homepage for ASA Logger.</p>
-<p>Find me in app/views/pages/home.html.erb</p>
+<% if signed_in? %>
+  <table class="front" summary="For signed-in users">
+    <tr>
+      <td class="main">
+        <h1 class="micropost">What do you have to report?</h1>
+        <%= render 'shared/micropost_form' %>
+		<%= render 'shared/feed' %>
+      </td>
+      <td class="sidebar round">
+        <%= render 'shared/user_info' %>
+      </td>
+    </tr>
+  </table>
+<% else %>
+  <h1>Prince George's County</h1>
+  <p>
+    Please log all trackable events.
+  </p>
 
-<%= link_to "Sign up now!", signup_path, :class=>"signup_button round" %>
+  <%= link_to "Sign up now!", signup_path, :class => "signup_button round" %>
+<% end %>

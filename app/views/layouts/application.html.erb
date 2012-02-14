@@ -3,13 +3,16 @@
 	<head>
 		<title><%= title %></title>
 		<%-csrf_meta_tag%>
-		<!--[if lt IE 9]>
 		<%= render 'layouts/stylesheets' %>
+		<%= javascript_include_tag :defaults %>
 	</head>
 	<body>
 		<div class="container">
 			<%= render 'layouts/header' %>
 			<section class="round">
+				<% flash.each do |key, value| %>
+					<%= content_tag(:div, value, :class => "Flash #{key}") %>
+				<% end %>
 				<%= yield %>
 			</section>
 			<%= render 'layouts/footer' %>
